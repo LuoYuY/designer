@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.edu.zjut.po.Example" table="example" catalog="designer">
+		<id name="exampleId" type="int">
+			<column name="exampleID" />
+			<generator class="increment" />
+		</id>
+		<property name="name" type="string">
+			<column name="name" length="20" />
+		</property>
+		<property name="description" type="string">
+			<column name="description" length="100" />
+		</property>
+		<property name="style" type="string">
+			<column name="style" length="20" />
+		</property>
+		<property name="praise" type="java.lang.Integer">
+			<column name="praise" />
+		</property>
+		<property name="time" type="java.sql.Timestamp">
+			<column name="time" />
+		</property>
+		<property name="area" type="string"> 
+			<column name="area" length="10" />
+		</property>
+		<!-- 与designer的多对一关联（双向）-->
+		<many-to-one name="designer" class="cn.edu.zjut.po.Designer" cascade="all" lazy="false">
+			<column name="designerID" />
+		</many-to-one>
+		<!-- 与examplePanorama的一对多关联（双向） -->
+		<set name="panoramas" cascade="all" lazy="false"> <!-- 由多端（examplePanorama）控制关联的关系 -->
+			<key column="exampleID" /> <!-- 指定关联的外键 -->
+			<one-to-many class="cn.edu.zjut.po.ExamplePanorama" /> <!-- 映射到关联类属性 -->
+		</set>
+		<!-- 与examplePicture的一对多关联（双向） -->
+		<set name="pictures" cascade="all" lazy="false"> <!-- 由多端（examplePicture）控制关联的关系 -->
+			<key column="exampleID" /> <!-- 指定关联的外键 -->
+			<one-to-many class="cn.edu.zjut.po.ExamplePicture" /> <!-- 映射到关联类属性 -->
+		</set>
+		<!-- 与comments的一对多关联（单向） -->
+		<set name="comments" cascade="all" lazy="false">
+			<key column="exampleID" /> <!-- 指定关联的外键 -->
+			<one-to-many class="cn.edu.zjut.po.Comments" /> <!-- 映射到关联类属性 -->
+		</set>
+		
+		<!-- 与designers的多对多关联（单向） -->
+    	<set name="em_collecters" table="star" cascade="save-update" lazy="false">
+   			 <key column="exampleID"></key>
+       		 <many-to-many class="cn.edu.zjut.po.Employer" column="collecter"></many-to-many>
+  	    </set>
+	</class>
+</hibernate-mapping>
