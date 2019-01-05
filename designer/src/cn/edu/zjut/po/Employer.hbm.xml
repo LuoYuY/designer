@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.edu.zjut.po.Employer" table="employer" catalog="designer">
+		<id name="employerId" type="string">
+			<column name="employerID" length="10" />
+			<generator class="assigned" />
+		</id>
+		<property name="account" type="string">
+			<column name="account" length="20" unique="true" />
+		</property>
+		<property name="name" type="string">
+			<column name="name" length="20" />
+		</property>
+		<property name="password" type="string">
+			<column name="password" length="20" />
+		</property>
+		<property name="IDNumber" type="string">
+			<column name="IDNumber" length="18" />
+		</property>
+		<property name="phone" type="string">
+			<column name="phone" length="20" />
+		</property>
+		<property name="email" type="string">
+			<column name="email" length="100" />
+		</property>
+		<property name="sex" type="java.lang.Boolean">
+			<column name="sex" />
+		</property>
+		<property name="region" type="string">
+			<column name="region" length="20" />
+		</property>
+		<property name="wechat" type="string">
+			<column name="wechat" length="20" />
+		</property>
+		<property name="qq" type="string">
+			<column name="qq" length="20" />
+		</property>
+		<property name="profilePhoto" type="string">
+			<column name="profilePhoto" length="255" />
+		</property>
+		<property name="hmpgbkg" type="string">
+			<column name="hmpgbkg" length="255" />
+		</property>
+	
+		<!-- 与关注的designer的多对多关联（单向） -->
+		<set name="designer_follow" table="follow">
+			<key column="follower" /> <!-- 指定关联的外键 -->
+			<many-to-many column="designerID" class="cn.edu.zjut.po.Designer" />
+		</set>
+		<!-- 与needs的一对多关联 -->
+		<set name="needs" inverse="true" lazy="false"> <!-- 由多端（needs）控制关联的关系 -->
+			<key column="employerID" /> <!-- 指定关联的外键 -->
+			<one-to-many class="cn.edu.zjut.po.Needs" /> <!-- 映射到关联类属性 -->
+		</set>
+		<!-- 与subscribe的一对多关联 -->
+		<set name="subscribe" inverse="true" lazy="false"> <!-- 由多端（subscribe）控制关联的关系 -->
+			<key column="subscriber" /> <!-- 指定关联的外键 -->
+			<one-to-many class="cn.edu.zjut.po.Subscribe" /> <!-- 映射到关联类属性 -->
+		</set>
+		
+		<!-- 与order的一对多关联-->
+		<set name="orderrs" inverse="true" cascade="all" lazy="false">
+            <key column="employerID" />
+            <one-to-many class="cn.edu.zjut.po.Orderr" />
+        </set>
+        
+        
+        <set name="examples_star" table="star" cascade="save-update">
+   			 <key column="collector"></key>
+       		 <many-to-many class="cn.edu.zjut.po.Example" column="exampleID"></many-to-many>
+  	    </set>
+	</class>
+</hibernate-mapping>

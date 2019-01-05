@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.action.excludePattern" value="/css/.*?" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.ui.templateDir" value="template" />
+	<constant name="struts.ui.templateSuffix" value="ftl" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.multipart.maxSize" value="209715200" />
+	<constant name="struts.multipart.saveDir" value="/tmp" />
+	<package name="strutsBean" extends="struts-default" namespace="/">
+		<action name="uploadCase" class="designerAction" method="upload">
+			<result name="uploadSucccess">/test1.jsp</result>
+			<result name="uploadFail">/test1.jsp</result>
+		</action>
+		<action name="login" class="designerAction" method="login">
+			<result name="loginSuccess">/index.jsp</result>
+			<result name="loginFail">/login.jsp</result>
+		</action>
+		<action name="findAllExample" class="exampleAction" method="findAllExample">
+			<result name="success">/projects.jsp</result>
+		</action>
+		<action name="putExample" class="exampleAction" method="putExample">
+			<result name="success">/exampleDetails.jsp</result>
+		</action>
+		<action name="showPanorama" class="panoramaAction" method="show">
+			<result name="showSuccess">/showPanorama.jsp</result>
+		</action>
+		<action name="putDesigner" class="designerAction" method="putDesigner">
+			<result name="others">/phpOthers.jsp</result>
+			<result name="myself">/php.jsp</result>
+		</action>
+			<action name="gotoSubscribe" class="designerAction" method="gotoSubscribe">
+			<result name="success">/subscribe.jsp</result>
+		</action>
+		<action name="putEmployer" class="employerAction" method="putEmployer">
+			<result name="others">/employerPhpOthers.jsp</result>
+			<result name="myself">/employerPhp.jsp</result>
+		</action>
+		<action name="Review" class="exampleAction" method="review">
+			<result name="viewSuccess">/exampleDetails.jsp</result>
+			<result name="viewFail">/exampleDetails.jsp</result>
+		</action>
+		<action name="judge" class="designerAction" method="judgeIdentity">
+			<result name="designer">/php.jsp</result>
+			<result name="employer">/employerPhp.jsp</result>
+		</action>
+		<action name="registerDes" class="designerAction" method="registerDes">
+			<result name="success">/registerDes.jsp</result>
+			<result name="fail">/registerDes.jsp</result>
+		</action>
+		<action name="registerEmp" class="employerAction" method="registerEmp">
+			<result name="success">/registerEmp.jsp</result>
+			<result name="fail">/registerEmp.jsp</result>
+		</action>
+		<action name="order" class="needsAction" method="order">
+			<result name="success">/needs.jsp</result>
+			<result name="fail">/needs.jsp</result>
+		</action>
+		<action name="subscribe" class="subscribeAction" method="subscribe">
+			<result name="success">/phpOthers.jsp</result>
+			<result name="fail">/phpOthers.jsp</result>
+		</action>
+		<action name="findneeds" class="needsAction" method="findneeds">
+			<result name="findneedssuccess">/needList.jsp</result>
+		</action>
+		<action name="putSubscribe" class="subscribeAction" method="putSubscribe">
+			<result name="success">/subscribeDetail.jsp</result>
+		</action>
+		<action name="findAll" class="designerAction" method="findAll" >
+			<result name="success">/selectDesigner.jsp</result>
+			<result name="fail">/login.jsp</result>
+		</action>
+		<action name="findByPraise" class="designerAction" method="findByPraise" >
+			<result name="praiseSuccess">/selectByPraise.jsp</result>
+			<result name="praiseFail">/login.jsp</result>
+		</action>
+		
+		<action name="accept" class="subscribeAction" method="accept">
+			<result name="success">/php.jsp</result>
+			 
+		</action>
+	
+	
+	  <!--增加 gotoGenerateOrder -->
+		<action name="gotoGenerateOrder" class="subscribeAction" method="gotoGenerateOrder">
+			<result name="success">/subscribeToOrderr.jsp</result> 
+		</action>
+		
+		
+		<action name="reject" class="subscribeAction" method="reject">
+			<result name="success">/php.jsp</result>
+		</action>
+		
+		<action name="findByScore" class="designerAction" method="findByScore" >
+			<result name="scoreSuccess">/selectByScore.jsp</result>
+			<result name="scoreFail">/login.jsp</result>
+		</action>
+		
+	
+		<action name="searchInFrame" class="exampleAction" method="searchInFrame">
+			<result name="success">/projects.jsp</result>
+			<result name="fail">/projects.jsp</result>
+		</action>
+		
+			
+		<action name="searchInList" class="exampleAction" method="searchInList">
+			<result name="success">/resultList.jsp</result>
+			<result name="fail">/resultList.jsp</result>
+		</action>
+		
+			
+		<action name="searchInList" class="exampleAction" method="searchInList">
+			<result name="success">/resultList.jsp</result>
+			<result name="fail">/resultList.jsp</result>
+		</action>
+		
+		<action name="praise" class="exampleAction" method="praise">
+		</action>
+		<action name="star" class="exampleAction" method="star">
+		</action>
+		
+		<action name="SubmitOrderr" class="orderrAction" method="SubmitOrderr" >
+			<result name="success" >/orderDetail.jsp</result>
+			<result name="false">/wrong.jsp </result>
+		</action>
+		<action name="changeOrderrSt" class="orderrAction" method="changeOrderrSt" >
+			<result name="success">/orderDetail.jsp</result>
+		</action>
+		<action name="orderrByID" class="orderrAction" method="getOrderrByID">
+			<result name="success">/orderDetail.jsp</result>
+		</action>
+		<action name="needsByID" class="needsAction" method="getNeedsByID">
+			<result name="success">/needsDetail.jsp</result>
+		</action>
+		<action name="SignUp" class="needsAction" method="SignUp">
+			<result name="success">/needsDetail.jsp</result>
+		</action>
+		<action name="logout" class="designerAction" method="logout">
+			<result name="success">/login.jsp</result>
+			<result name="false">/wrong.jsp </result>
+		</action>
+		<action name="SelectDes" class="needsAction" method="SelectDes">
+			<result name="success">/NeedsToOrderr.jsp</result>
+			<result name="false">/wrong.jsp </result>
+		</action>
+		
+		
+		
+		<action name="update" class="cn.edu.zjut.action.DesignerAction" method="update">
+         	<result name="success" >/Dpersonal.jsp</result>
+         	<result name="fail" >/Dpersonal.jsp</result>
+         </action>
+         <action name="update2" class="cn.edu.zjut.action.DesignerAction" method="update2">
+         	<result name="success" >/Dcertificate.jsp</result>
+         	<result name="fail" >/Dcertificate.jsp</result>
+         </action>
+         <action name="update3" class="cn.edu.zjut.action.EmployerAction" method="update3">
+         	<result name="success" >/Dpersonal.jsp</result>
+         	<result name="fail" >/Dpersonal.jsp</result>
+         </action>
+         <action name="recommend1" class="cn.edu.zjut.action.DesignerAction" method="recommend1">
+         	<result name="success" >/recommend.jsp</result>
+         	<result name="fail" >/recommend.jsp</result>
+         </action>
+         <action name="recommend2" class="cn.edu.zjut.action.DesignerAction" method="recommend2">
+         	<result name="success" >/recommend.jsp</result>
+         	<result name="fail" >/recommend.jsp</result>
+         </action>
+         <action name="recommend3" class="cn.edu.zjut.action.DesignerAction" method="recommend3">
+         	<result name="success" >/recommend.jsp</result>
+         	<result name="fail" >/recommend.jsp</result>
+         </action>
+	</package>
+</struts>
