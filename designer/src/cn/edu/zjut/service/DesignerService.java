@@ -21,6 +21,8 @@ import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.Transaction;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 import com.opensymphony.xwork2.ActionContext;
@@ -182,6 +184,11 @@ public class DesignerService implements IDesignerService {
 			designer.getExamples_own().add(example);
 			designerDAO.update(designer);
 			request.put("tip", "妗堜緥涓婁紶鎴愬姛锛�");
+			
+			//update examplenum
+            Integer count =(Integer)servletContext.getAttribute("examplenum");
+            servletContext.setAttribute("examplenum", count+1);
+	        
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -172,5 +172,10 @@
          	<result name="success" >/recommend.jsp</result>
          	<result name="fail" >/recommend.jsp</result>
          </action>
+         
+         
+         <action name="showDataChart" class="cn.edu.zjut.action.WebdataAction" method="showDataChart">
+         	<result name="success" >/datachart.jsp</result>
+         </action>
 	</package>
 </struts>
