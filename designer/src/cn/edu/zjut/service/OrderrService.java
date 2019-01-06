@@ -7,6 +7,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import javax.servlet.ServletContext;
+
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
+
 import com.opensymphony.xwork2.ActionContext;
 
 import cn.edu.zjut.dao.IDesignerDAO;
@@ -82,6 +87,11 @@ public class OrderrService implements IOrderrService{
 			orderrDAO.save(order);
 			request.put("orderr",order);
 			session.put("designer", Designer);
+			//update ordernum
+			WebApplicationContext webApplicationContext = ContextLoader.getCurrentWebApplicationContext();
+		    ServletContext servletContext = webApplicationContext.getServletContext();
+            Integer count =(Integer)servletContext.getAttribute("ordernum");
+            servletContext.setAttribute("ordernum", count+1);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

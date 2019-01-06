@@ -57,6 +57,18 @@ window.onload=function(){
 
 	var fangweng = echarts.init(document.getElementById('fangweng'));
 	var num = echarts.init(document.getElementById('num'));
+	var values=new Array(5);
+	
+	
+	
+	<s:iterator value="#request.datalist" status="s">
+		values[<s:property value="#s.index" />] = <s:property value="visit"/>
+	</s:iterator>
+
+	
+	
+	
+	
 	
 	var option = {
 			 title: {
@@ -70,7 +82,7 @@ window.onload=function(){
 		        type: 'value'
 		    },
 		    series: [{
-		        data: [5, 10, 5, 18, 20,7, 23],
+		        data: [5, values[0], values[1], values[2], values[3],values[4]],
 		        type: 'line'
 		    }]
 	};

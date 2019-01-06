@@ -86,11 +86,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li><a href="employerIndex.jsp">个人中心</a></li>
 						  </s:elseif>
 						</s:else>
-						
-						
-						
-							
-							
 					</ul>
 					</nav>
 				</div>
@@ -125,8 +120,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</s:else>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
 	</div>
